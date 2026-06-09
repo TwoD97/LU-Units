@@ -15,7 +15,7 @@ export class Tokenizer {
             } else if (char === "+" || char === "-" || char === "*" || char === "/") {
                 tokens.push({ kind: "operator", value: char });
                 i++;
-            } else if (char >= "0" || char <= "9") {
+            } else if (char >= "0" && char <= "9") {
                 tokens.push({ kind: "number", value: char });
                 i++;
             } else if (char === "(" || char === ")") {
@@ -30,7 +30,7 @@ export class Tokenizer {
 
             }
         }
-
+    return tokens;
 
     }
 }
