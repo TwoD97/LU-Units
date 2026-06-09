@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+*.log
+
+# erzeugte Grafiken (optional auskommentieren, falls baum.png eingecheckt werden soll)
+# baum.png

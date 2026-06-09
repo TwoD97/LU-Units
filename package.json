@@ -1,0 +1,41 @@
+{
+  "name": "unit-tests-termbaum",
+  "version": "1.0.0",
+  "description": "ILA Unit Tests - Stack, Tokenizer, Shunting-Yard, RPN-Evaluator und Termbaum (TypeScript, Bun)",
+  "type": "module",
+  "bin": {
+    "termbaum": "dist/termbaum"
+  },
+  "scripts": {
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "dev": "bun run src/cli.ts",
+    "start": "bun run src/index.ts",
+    "plot": "bun run src/AstPlotter.ts",
+    "typecheck": "tsc --noEmit",
+    "compile": "bun build src/cli.ts --compile --outfile dist/termbaum",
+    "compile:linux-x64": "bun build src/cli.ts --compile --target=bun-linux-x64 --outfile dist/termbaum-linux-x64",
+    "compile:linux-arm64": "bun build src/cli.ts --compile --target=bun-linux-arm64 --outfile dist/termbaum-linux-arm64"
+  },
+  "keywords": [
+    "stack",
+    "tokenizer",
+    "shunting-yard",
+    "rpn",
+    "ast",
+    "termbaum",
+    "unit-tests"
+  ],
+  "author": "Denys Tudosa",
+  "license": "MIT",
+  "dependencies": {
+    "@hpcc-js/wasm-graphviz": "^1.22.0",
+    "graphology": "^0.25.4",
+    "ts-graphviz": "^2.1.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "@types/bun": "^1.1.6"
+  }
+}

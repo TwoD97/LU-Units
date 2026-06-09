@@ -2,7 +2,7 @@
 
 Laborübung *Unit Tests* (4. Klasse IT-KPT). Ein Taschenrechner für mathematische
 Terme, schrittweise aufgebaut: vom Tokenizer über die Shunting-Yard-Umwandlung
-und die RPN-Auswertung bis zum Termbaum (AST) samt PNG-Ausgabe – jede Stufe mit
+und die RPN-Auswertung bis zum Termbaum (AST) samt SVG-Ausgabe – jede Stufe mit
 eigenen Unit Tests.
 
 Als Laufzeit, Paketmanager, Test-Runner und Compiler kommt [Bun](https://bun.sh)
@@ -18,7 +18,7 @@ src/
   ShuntingYard.ts   Umwandlung in RPN
   RpnEvaluator.ts   Auswertung der RPN
   AstBuilder.ts     Aufbau des Termbaums (AST)
-  AstPlotter.ts     Visualisierung als PNG
+  AstPlotter.ts     Visualisierung als SVG
   cli.ts            CLI-Einstiegspunkt
   index.ts          Gesamtablauf
 tests/              Unit Tests (bun test)
@@ -39,7 +39,7 @@ bun install
 | `bun run test:coverage`     | Tests mit Coverage-Report                     |
 | `bun run dev "<term>"`      | CLI im Dev-Modus (`src/cli.ts`)               |
 | `bun run start`             | Programm starten (`src/index.ts`)             |
-| `bun run plot`              | Termbaum als PNG erzeugen                      |
+| `bun run plot`              | Termbaum als SVG erzeugen                      |
 | `bun run typecheck`         | Typprüfung mit `tsc --noEmit`                  |
 | `bun run compile:linux-x64` | eigenständige Linux-Binary erzeugen (`dist/`) |
 
@@ -65,11 +65,13 @@ chmod +x termbaum-linux-x64
 ## Bibliotheken
 
 - **graphology** – Graphstruktur für den Termbaum
-- **ts-graphviz** + **@ts-graphviz/adapter** – DOT-Erzeugung und Rendering als PNG
-  (braucht eine installierte [Graphviz](https://graphviz.org/)-`dot`-Binary)
+- **ts-graphviz** – Erzeugung der DOT-Beschreibung des Termbaums
+- **@hpcc-js/wasm-graphviz** – Rendering der DOT-Beschreibung als SVG. [Graphviz](https://graphviz.org/)
+  läuft hier als WebAssembly, also **ohne installierte `dot`-Binary** und
+  plattformunabhängig (wird von `bun build --compile` mit eingebettet)
 - **typescript** – Typprüfung
 
 
 # Arbeitsbericht 
 
-First Job i
+First Task projekt structure project files and the needed libraries nailed.
