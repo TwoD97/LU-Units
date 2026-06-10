@@ -16,4 +16,28 @@ describe("Tokenizer", () => {
       { kind: "number", value: "4" },
     ]);
   });
+
+  it("fasst mehrstellige Zahlen zu einem Token zusammen", () => {
+    const result = new Tokenizer().tokenize("42 + 5");
+
+    expect(result).toEqual([
+      { kind: "number", value: "42" },
+      { kind: "operator", value: "+" },
+      { kind: "number", value: "5" },
+    ]);
+  });
+
+  it("erkennt Klammern als eigene Token", () => {
+    const result = new Tokenizer().tokenize("(1)");
+
+    expect(result).toEqual([
+      { kind: "lparen", value: "(" },
+      { kind: "number", value: "1" },
+      { kind: "rparen", value: ")" },
+    ]);
+  });
+
+  it("wirft bei einem ungültigen Zeichen", () => {
+    expect(() => new Tokenizer().tokenize("3 § 4")).toThrow();
+  });
 });
