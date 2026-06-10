@@ -1,15 +1,21 @@
 // Baut aus einer RPN-Liste den Termbaum (AST) auf – mithilfe des Stacks.
-
-import { ASTNode } from "ts-graphviz/ast";
 import { Stack } from "./Stack.js";
+import type { Token } from "./types.js";
+import type { ASTNode } from "./types.js";
 
 export class AstBuilder {
-    astBuild(term:string): ASTNode {
-        const node = new Stack<ASTNode>();
+    astBuild(input: Token[]): ASTNode {
+        const nodes = new Stack<ASTNode>();
 
         let i = 0;
-        while ( i < term.length){
-            if ( term)
+        while (i < input.length) {
+            if (input[i].kind === "number") {
+                nodes.push({ value: input[i].value });
+            } else if (input[i].kind === "operator"){
+                const right = nodes.pop();
+                const left = nodes.pop()
+                nodes.push({ value: input[i].value, leftChild: left, rightChild: right})
+            }
         }
     }
 }

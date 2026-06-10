@@ -9,6 +9,6 @@ export interface Token {
 
 export interface ASTNode {
     value: string,
-    rightChild: ASTNode,
-    leftChild: ASTNode
+    rightChild?: ASTNode,
+    leftChild?: ASTNode
 }
