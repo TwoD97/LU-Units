@@ -1,10 +1,10 @@
 // Gemeinsame Typen: Token und AST-Knoten.
 
-export type Kind = "number" | "operator" | "lparen" | "rparen";
+export type Kind = "number" | "operator" | "lparen" | "rparen" | "variables";
 
 export interface Token {
     kind: Kind,
-    value: string
+    value: string,
 }
 
 export interface ASTNode {

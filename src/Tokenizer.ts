@@ -5,28 +5,29 @@ import type { Token } from "./types.js";
 
 export class Tokenizer {
   tokenize(input: string): Token[] {
+    const varpatt: RegExp = /[A-Za-z][A-Za-z0-9]*/;
     const tokens: Token[] = [];
+    const variables: Record< Token, 
     let i = 0;
 
     while (i < input.length) {
       const char = input[i];
 
       if (char === " ") {
-        // Leerzeichen sind nur Trenner -> überspringen.
         i++;
         continue;
-      } else if (char === "+" || char === "-" || char === "*" || char === "/") {
+      } else if (varpatt.test(input[i])){
+
+      }else if (char === "+" || char === "-" || char === "*" || char === "/") {
         tokens.push({ kind: "operator", value: char });
         i++;
       } else if (char >= "0" && char <= "9") {
-        // Zahl: alle direkt folgenden Ziffern zu einem Token zusammenfassen.
         let number = "";
         while (i < input.length && input[i] >= "0" && input[i] <= "9") {
           number += input[i];
           i++;
         }
         tokens.push({ kind: "number", value: number });
-        // kein i++ -> die innere Schleife hat i schon weitergeschoben.
       } else if (char === "(") {
         tokens.push({ kind: "lparen", value: char });
         i++;

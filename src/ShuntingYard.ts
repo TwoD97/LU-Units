@@ -3,7 +3,7 @@
 import { Stack } from "./Stack";
 import { Token } from "./types";
 
-export class ShuntingYard<T> {
+export class ShuntingYard {
     rpnsort(input: Token[]): Token[] {
         const output: Token[] = [];
         const operators = new Stack<Token>();
@@ -12,7 +12,8 @@ export class ShuntingYard<T> {
         while (i < input.length) {
             if (input[i].kind === "number") {
                 output.push(input[i]);
-            } else if (input[i].kind === "operator") {
+            } else if (input[i].kind === "variables")
+             else if (input[i].kind === "operator") {
                 while (
                     !operators.isEmpty() &&
                     operators.peek().kind === "operator" &&

@@ -20,7 +20,7 @@ describe("Stack", () => {
     s.push(1);
     s.push(2);
     expect(s.peek()).toBe(2);
-    expect(s.peek()).toBe(2); // zweimal abgefragt -> immer noch da
+    expect(s.peek()).toBe(2);
     expect(s.size()).toBe(2);
   });
 
@@ -39,6 +39,16 @@ describe("Stack", () => {
     expect(s.size()).toBe(2);
     s.pop();
     expect(s.size()).toBe(1);
+  });
+
+  it("length gibt die Anzahl der Elemente zurück", () => {
+    const s = new Stack<number>();
+    expect(s.length).toBe(0);
+    s.push(10);
+    s.push(20);
+    expect(s.length).toBe(2);
+    s.pop();
+    expect(s.length).toBe(1);
   });
 
   it("pop auf leerem Stack wirft einen Fehler", () => {
