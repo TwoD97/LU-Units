@@ -14,9 +14,9 @@
     "start": "bun run src/index.ts",
     "plot": "bun run src/AstPlotter.ts",
     "typecheck": "tsc --noEmit",
-    "compile": "bun build src/cli.ts --compile --outfile dist/termbaum",
-    "compile:linux-x64": "bun build src/cli.ts --compile --target=bun-linux-x64 --outfile dist/termbaum-linux-x64",
-    "compile:linux-arm64": "bun build src/cli.ts --compile --target=bun-linux-arm64 --outfile dist/termbaum-linux-arm64"
+    "build": "bun build src/cli.ts --compile --outfile dist/termbaum",
+    "build:linux-x64": "bun build src/cli.ts --compile --target=bun-linux-x64 --outfile dist/termbaum-linux-x64",
+    "build:linux-arm64": "bun build src/cli.ts --compile --target=bun-linux-arm64 --outfile dist/termbaum-linux-arm64"
   },
   "keywords": [
     "stack",

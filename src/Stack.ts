@@ -12,10 +12,10 @@ export class Stack<T> {
   }
 
   pop(): T {
-    if (this.isEmpty())  throw new Error("pop() auf leerem Stack");
-    
+    if (this.isEmpty()) throw new Error("pop() auf leerem Stack");
+
+    const value = this.peek();
     this.count--;
-    const value = this.items[this.count]!;
     delete this.items[this.count];
     return value;
   }

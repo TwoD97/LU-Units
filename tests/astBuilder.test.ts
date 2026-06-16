@@ -23,6 +23,17 @@ describe("AstBuilder", () => {
       rightChild: { value: "4" }
     })
   });
+  it("erzeugt aus 'a * (b + 2)' einen Termbaum mit Variablen-Blättern", () => {
+    expect(execute("a * (b + 2)")).toEqual({
+      value: "*",
+      leftChild: { value: "a" },
+      rightChild: {
+        value: "+",
+        leftChild: { value: "b" },
+        rightChild: { value: "2" }
+      }
+    })
+  });
   it("erzeugt aus '3 + 4 * ( 3 + 4 )' den korrekten Termbaum", () => {
     expect(execute("3 + 4 * ( 3 + 4 )")).toEqual({
       value: "+",

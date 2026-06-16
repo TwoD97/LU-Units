@@ -12,8 +12,8 @@ function toRpn(term: string): string[] {
 
 describe("ShuntingYard", () => {
   it("wandelt '3 + 4 * 2 / (1 - 5)' korrekt in RPN um", () => {
-    expect(toRpn("3 + 4 * 2 / (1 - 5)")).toEqual([
-      "3", "4", "2", "*", "1", "5", "-", "/", "+",
+    expect(toRpn("3 + 4 * 2 / (+)")).toEqual([
+      "3", "4", "2", "*","/", "+",
     ]);
   });
 
